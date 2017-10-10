@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">twhc</string>
+    <string name="internet_connection">Please Check the Internet Connection</string>
 </resources>

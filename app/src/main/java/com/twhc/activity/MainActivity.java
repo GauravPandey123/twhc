@@ -1,8 +1,9 @@
-package com.twhc;
+package com.twhc.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.twhc.R;
 import com.twhc.helper.SlideShowAdapter;
 import com.twhc.helper.ViewPagerSlideshow;
 

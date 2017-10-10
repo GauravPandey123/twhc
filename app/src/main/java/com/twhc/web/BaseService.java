@@ -3,8 +3,8 @@ package com.twhc.web;
 import android.content.Context;
 import android.util.Log;
 
-import com.editsoft.ansh.mudzic.BuildConfig;
-import com.editsoft.ansh.mudzic.utils.Constants;
+import com.twhc.BuildConfig;
+import com.twhc.utility.AppConstatnts;
 
 import java.util.Map;
 
@@ -30,7 +30,7 @@ public abstract class BaseService<U, T extends BaseRequest, L extends BaseRespon
     private static HttpLoggingInterceptor sLoggingInterceptor;
 
     public void executeService(T request, APICallback<L> callback) {
-        request.setAuthToken(Constants.AUTH_KEY);
+        request.setAuthToken(AppConstatnts.AUTH_KEY);
         request.addHeader("X-APP-VERSION", BuildConfig.VERSION_NAME);
         request.addHeaders(getHeaders());
         try {
