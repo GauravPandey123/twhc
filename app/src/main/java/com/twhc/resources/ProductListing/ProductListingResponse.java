@@ -1,4 +1,7 @@
-package com.twhc.resources;
+package com.twhc.resources.ProductListing;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.twhc.web.BaseResponse;
 
@@ -147,7 +150,7 @@ public class ProductListingResponse extends BaseResponse<ProductListingResponse>
             this.category = category;
         }
 
-        public static class CategoryBean {
+        public static class CategoryBean implements Parcelable {
             /**
              * id : 2
              * parentId : 1
@@ -161,6 +164,24 @@ public class ProductListingResponse extends BaseResponse<ProductListingResponse>
             private String name;
             private Object created_at;
             private Object updated_at;
+
+            protected CategoryBean(Parcel in) {
+                id = in.readInt();
+                parentId = in.readInt();
+                name = in.readString();
+            }
+
+            public static final Creator<CategoryBean> CREATOR = new Creator<CategoryBean>() {
+                @Override
+                public CategoryBean createFromParcel(Parcel in) {
+                    return new CategoryBean(in);
+                }
+
+                @Override
+                public CategoryBean[] newArray(int size) {
+                    return new CategoryBean[size];
+                }
+            };
 
             public int getId() {
                 return id;
@@ -200,6 +221,18 @@ public class ProductListingResponse extends BaseResponse<ProductListingResponse>
 
             public void setUpdated_at(Object updated_at) {
                 this.updated_at = updated_at;
+            }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel parcel, int i) {
+                parcel.writeInt(id);
+                parcel.writeInt(parentId);
+                parcel.writeString(name);
             }
         }
     }

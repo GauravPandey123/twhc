@@ -2,6 +2,7 @@ package com.twhc.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.twhc.R;
-import com.twhc.resources.ProductListingResponse;
+import com.twhc.activity.ProductDetailActivity;
+import com.twhc.resources.ProductListing.ProductListingResponse;
+import com.twhc.utility.AppConstants;
 
 import java.util.ArrayList;
 
@@ -36,13 +39,16 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
     }
 
     @Override
-    public void onBindViewHolder(ProdutListingViewHolder holder, int position) {
+    public void onBindViewHolder(ProdutListingViewHolder holder, final int position) {
         dataBean = dataBeanArrayList.get(position);
         holder.textViewProductListing.setText(dataBean.getName());
+
         holder.cardViewRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent=new Intent(mContext,)
+                Intent intent = new Intent(mContext, ProductDetailActivity.class);
+                intent.putExtra(AppConstants.PRODUCT_ID, (Parcelable) dataBean.getCategory());
+                mContext.startActivity(intent);
             }
         });
     }

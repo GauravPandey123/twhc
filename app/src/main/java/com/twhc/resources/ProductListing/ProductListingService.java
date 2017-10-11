@@ -1,4 +1,4 @@
-package com.twhc.resources;
+package com.twhc.resources.ProductListing;
 
 import com.twhc.web.BaseService;
 

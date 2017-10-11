@@ -2,7 +2,7 @@ package com.twhc.web;
 
 import android.text.TextUtils;
 
-import com.twhc.utility.AppConstatnts;
+import com.twhc.utility.AppConstants;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,6 +51,6 @@ public abstract class BaseRequest extends APIRequest implements APIConstants {
     }
 
     public String getBaseUrl() {
-        return AppConstatnts.BASE_URL;
+        return AppConstants.BASE_URL;
     }
 }
