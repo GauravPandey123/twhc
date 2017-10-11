@@ -6,11 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.twhc.R;
 import com.twhc.adapter.ProductCategoryAdapter;
+import com.twhc.adapter.ProductListingAdapter;
 import com.twhc.resources.ProductDetail.ProductDetailResponse;
 import com.twhc.resources.ProductListing.ProductListingRequest;
 import com.twhc.resources.ProductListing.ProductListingResponse;
@@ -60,6 +63,14 @@ public class ProductCategoryActivity extends AppCompatActivity {
     }
 
     private void initializations() {
+        dataBeanArrayList = new ArrayList<>();
+        productCategoryAdapter = new ProductCategoryAdapter(this, dataBeanArrayList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
+        productCategory.setLayoutManager(linearLayoutManager);
+        productCategory.computeVerticalScrollOffset();
+        productCategory.setItemAnimator(new DefaultItemAnimator());
+        productCategory.setAdapter(productCategoryAdapter);
+        checkWebServices();
     }
 
     private void checkWebServices() {

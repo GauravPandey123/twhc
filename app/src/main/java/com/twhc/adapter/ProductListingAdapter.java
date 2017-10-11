@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.twhc.R;
+import com.twhc.activity.ProductCategoryActivity;
 import com.twhc.activity.ProductDetailActivity;
 import com.twhc.resources.ProductListing.ProductListingResponse;
 import com.twhc.utility.AppConstants;
@@ -46,8 +47,7 @@ public class ProductListingAdapter extends RecyclerView.Adapter<ProductListingAd
         holder.cardViewRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ProductDetailActivity.class);
-                intent.putExtra(AppConstants.PRODUCT_ID, (Parcelable) dataBean.getCategory());
+                Intent intent = new Intent(mContext, ProductCategoryActivity.class);
                 mContext.startActivity(intent);
             }
         });
