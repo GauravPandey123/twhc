@@ -12,19 +12,44 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.ProductListingActivity">
+        <activity
+            android:name=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ProductListingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ProductDetailActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.ProductDetailActivity" />
+        <activity
+            android:name=".activity.ProductCategoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NewsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.VisualDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.VisualCategoryActivity"
+            android:screenOrientation="portrait" />
 
-        <activity android:name=".activity.ProductCategoryActivity"/>
+        <activity android:name=".activity.EnquiryActivity"/>
+
+
     </application>
 
 </manifest>

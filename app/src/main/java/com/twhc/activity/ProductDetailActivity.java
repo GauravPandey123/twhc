@@ -11,11 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.twhc.R;
 import com.twhc.adapter.ProductDetailAdapter;
-import com.twhc.adapter.ProductListingAdapter;
 import com.twhc.resources.ProductDetail.ProductDetailRequest;
 import com.twhc.resources.ProductDetail.ProductDetailResponse;
 import com.twhc.resources.ProductDetail.ProductDetailService;
@@ -40,6 +42,10 @@ public class ProductDetailActivity extends AppCompatActivity {
     RecyclerView productDetailView;
     @BindView(R.id.swipe_rerfresh_layout)
     SwipeRefreshLayout swipeRerfreshLayout;
+    @BindView(R.id.imageViewBack)
+    ImageView imageViewBack;
+    @BindView(R.id.textViewTitle)
+    TextView textViewTitle;
 
     private ArrayList<ProductDetailResponse.DataBean> dataBeanArrayList;
     Context mContext;
@@ -68,13 +74,19 @@ public class ProductDetailActivity extends AppCompatActivity {
                 showProductDetail();
             }
         });
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     public void initialization() {
         dataBeanArrayList = new ArrayList<>();
-        intent =getIntent();
-        productId=intent.getIntExtra(AppConstants.PRODUCT_ID,0);
-
+        intent = getIntent();
+        productId = intent.getIntExtra(AppConstants.PRODUCT_ID, 0);
+        textViewTitle.setText("Product Detail");
     }
 
     private void setUpElement() {

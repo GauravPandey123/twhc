@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">twhc</string>
     <string name="internet_connection">Please Check the Internet Connection</string>
+    <string name="about_us">Truworth Healthcare is known as a Supplier of high quality Pharmaceutical Products like Pharmaceutical Capsules, Pharmaceutical Tablets, Pharmaceutical Syrup, Pharmaceutical Injections and Protein Powder. These products are relied upon for long term results and effectiveness in application. We offer these products after procuring them from the best sources and providing them to clients at competitive prices and desired quantities. We aim at providing better health solutions to clients as well as maximum satisfaction. These products are high on demand in the Pharmaceutical industry as well as the Retail sector. Our products are valued for their accurate composition, high effectiveness, minimum side effects, quick action and tamper proof packaging.
+
+Extensive markeing and localized represenation is the flair of the industry today. The maximum thrust on marketing is important for the optimum growth. The booming pharma industry has great potential for companies with local marketing/distribution. The doctors, chemist and trade feels comfortable with franchisee/marketing personnel who are localized. Thus, its important for companies to identify potential alliance partners and plan a long term growth strategy to secure leading position in the next five years.
+</string>
+    <string name="name">Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="email">Email</string>
+    <string name="company">Company</string>
+    <string name="Address">Address</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="country">Country</string>
+    <string name="details">Details</string>
+    <string name="btn_sign_up">Submit</string>
+    <string name="err_msg_name">Please Enter Name</string>
+    <string name="err_msg_email">Please Enter Email</string>
 </resources>

@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.twhc.R;
 import com.twhc.adapter.ProductCategoryAdapter;
-import com.twhc.adapter.ProductListingAdapter;
-import com.twhc.resources.ProductDetail.ProductDetailResponse;
 import com.twhc.resources.ProductListing.ProductListingRequest;
 import com.twhc.resources.ProductListing.ProductListingResponse;
 import com.twhc.resources.ProductListing.ProductListingService;
@@ -33,7 +33,7 @@ import in.editsoft.api.exception.APIException;
  * Created by Gaurav on 11/10/17.
  */
 
-public class ProductCategoryActivity extends AppCompatActivity {
+public class ProductCategoryActivity extends BaseActivity {
 
     @BindView(R.id.product_category)
     RecyclerView productCategory;
@@ -44,6 +44,10 @@ public class ProductCategoryActivity extends AppCompatActivity {
     ProductCategoryAdapter productCategoryAdapter;
     Context mContext;
     public ArrayList<ProductListingResponse.DataBean.CategoryBean> dataBeanArrayList = new ArrayList<>();
+    @BindView(R.id.imageViewBack)
+    ImageView imageViewBack;
+    @BindView(R.id.textViewTitle)
+    TextView textViewTitle;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,6 +61,13 @@ public class ProductCategoryActivity extends AppCompatActivity {
     }
 
     private void setUpListeners() {
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
     }
 
     private void setUpElements() {
@@ -83,12 +94,13 @@ public class ProductCategoryActivity extends AppCompatActivity {
 
 
     public void showProductList() {
+        showProgress();
         ProductListingRequest productListingRequest = new ProductListingRequest();
         ProductListingService productListingService = new ProductListingService();
         productListingService.executeService(productListingRequest, new BaseApiCallback<ProductListingResponse>() {
             @Override
             public void onComplete() {
-
+                dismissProgress();
             }
 
             @Override

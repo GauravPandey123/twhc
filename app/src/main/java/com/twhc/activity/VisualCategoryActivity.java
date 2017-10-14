@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.twhc.R;
 import com.twhc.adapter.ProductListingAdapter;
+import com.twhc.adapter.VisualCategoryAdapter;
 import com.twhc.resources.ProductListing.ProductListingRequest;
 import com.twhc.resources.ProductListing.ProductListingResponse;
 import com.twhc.resources.ProductListing.ProductListingService;
@@ -29,22 +30,21 @@ import butterknife.ButterKnife;
 import in.editsoft.api.exception.APIException;
 
 /**
- * Created by Gaurav on 7/10/17.
+ * Created by Gaurav on 14/10/17.
  */
 
-public class ProductListingActivity extends AppCompatActivity {
-
+public class VisualCategoryActivity extends AppCompatActivity {
     @BindView(R.id.recylerViewProductListing)
     RecyclerView recylerViewProductListing;
-    @BindView(R.id.swipe_rerfresh_layout_listing)
-    SwipeRefreshLayout swipeRerfreshLayoutListing;
     @BindView(R.id.imageViewBack)
     ImageView imageViewBack;
     @BindView(R.id.textViewTitle)
     TextView textViewTitle;
+    @BindView(R.id.swipe_rerfresh_layout_listing)
+    SwipeRefreshLayout swipeRerfreshLayoutListing;
 
     private ArrayList<ProductListingResponse.DataBean> dataBeanArrayList;
-    ProductListingAdapter productListingAdapter;
+    VisualCategoryAdapter productListingAdapter;
     Context context;
 
     @Override
@@ -58,6 +58,12 @@ public class ProductListingActivity extends AppCompatActivity {
     }
 
     private void setUpListeners() {
+        imageViewBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         swipeRerfreshLayoutListing.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -67,19 +73,12 @@ public class ProductListingActivity extends AppCompatActivity {
             }
         });
 
-        imageViewBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
     }
 
     private void setUpElements() {
-        textViewTitle.setText("Product Listing");
+        textViewTitle.setText("Visual Category");
         dataBeanArrayList = new ArrayList<>();
-        productListingAdapter = new ProductListingAdapter(dataBeanArrayList, this);
+        productListingAdapter = new VisualCategoryAdapter(dataBeanArrayList, this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         recylerViewProductListing.setLayoutManager(linearLayoutManager);
         recylerViewProductListing.computeVerticalScrollOffset();
@@ -128,6 +127,4 @@ public class ProductListingActivity extends AppCompatActivity {
         });
 
     }
-
-
 }
